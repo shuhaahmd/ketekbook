@@ -33,8 +33,7 @@ export default async function BookingPage() {
   return (
     <main className="booking-page">
       <div className="booking-page-heading">
-        <p className="section-eyebrow">LET'S GET YOU PLAYING</p>
-        <h1>Book your <span>court.</span></h1>
+        <p className="section-eyebrow">LET&apos;S GET YOU PLAYING</p>        <h1>Book your <span>court.</span></h1>
         <p>
           Choose your court, pick your time, and get ready
           for your next game.
