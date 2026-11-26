@@ -5,6 +5,8 @@ import { createClient } from "../../../lib/supabase/server";
 import CourtRateEditor from "../../../components/admin/CourtRateEditor";
 import "../dashboard.css";
 
+export const instant = false;
+
 export default async function ManageCourtsPage() {
   const supabase = await createClient();
 
@@ -79,13 +81,10 @@ export default async function ManageCourtsPage() {
                 {courts?.map((court) => (
                   <tr key={court.id}>
                     <td>{court.name}</td>
-
                     <td>{court.sports?.name || "Unknown"}</td>
-
                     <td>
                       <CourtRateEditor court={court} />
                     </td>
-                    
                     <td>
                       <span
                         className={`admin-status ${

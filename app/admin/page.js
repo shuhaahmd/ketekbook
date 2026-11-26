@@ -1,4 +1,3 @@
-
 import { redirect } from "next/navigation";
 import { createClient } from "../../lib/supabase/server";
 import "./dashboard.css";
@@ -7,8 +6,9 @@ import AdminLogoutButton from "../../components/admin/AdminLogoutButton";
 import Link from "next/link";
 import BookingsRealtimeRefresh from "../../components/admin/BookingsRealtimeRefresh";
 
+export const instant = false;
 
-export default async function AdminDashboardPage() {
+export default async function AdminDashboardPage()  {
   const supabase = await createClient();
 
   // Check whether the user is authenticated.

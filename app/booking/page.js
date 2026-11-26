@@ -2,6 +2,7 @@
 import { createClient } from "../../lib/supabase/server";
 import BookingForm from "../../components/booking/BookingForm";
 import "./booking.css";
+export const instant = false;
 
 export default async function BookingPage() {
   const supabase = await createClient();

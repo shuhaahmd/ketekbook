@@ -1,10 +1,11 @@
-
 import { createClient } from "../lib/supabase/server";
 
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import CourtCard from "../components/courts/CourtCard";
 import Link from "next/link";
+
+export const instant = false;
 
 export default async function Home() {
   const supabase = await createClient();
