@@ -1,28 +1,30 @@
 
+import Link from "next/link";
+
 export default function Header() {
   return (
     <header className="navbar">
-      <a href="/" className="brand">
+      <Link href="/" className="brand">
         <span className="brand-icon">K</span>
         <span>
           Ketek<span className="brand-light">Book</span>
         </span>
-      </a>
+      </Link>
 
       <nav className="nav-links">
-        <a href="/">Home</a>
-        <a href="/#courts">Our Courts</a>
-        <a href="/#about">About</a>
+        <Link href="/">Home</Link>
+        <Link href="/#courts">Our Courts</Link>
+        <Link href="/#about">About</Link>
       </nav>
 
       <div className="nav-actions">
-        <a href="/login" className="login-link">
-          Sign in
-        </a>
+        <Link href="/admin/login" className="login-link">
+          Admin Sign in
+        </Link>
 
-        <a href="/#courts" className="nav-cta">
-          Book a Court <span>↗</span>
-        </a>
+        <Link href="/#courts" className="nav-cta">
+          Book a Court
+        </Link>
       </div>
     </header>
   );
