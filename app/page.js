@@ -1,3 +1,4 @@
+
 import { createClient } from "../lib/supabase/server";
 
 import Header from "../components/layout/Header";
@@ -57,12 +58,12 @@ export default async function Home() {
           </p>
 
           <div className="hero-actions">
-          <Link href="/booking" className="primary-button">
-               Book Court <span>↗</span>
-          </Link>
+            <Link href="/booking" className="primary-button">
+              Book Court
+            </Link>
 
             <a href="#about" className="secondary-button">
-              Discover KetekBook <span>↓</span>
+              Discover KetekBook
             </a>
           </div>
 
@@ -160,7 +161,7 @@ export default async function Home() {
             </h2>
 
             <p className="section-description">
-              Whatever your game, there's a space waiting for you.
+              Whatever your game, there&apos;s a space waiting for you.
             </p>
           </div>
 
@@ -180,12 +181,10 @@ export default async function Home() {
         {[
           {
             name: "Pickleball",
-            icon: "🏓",
             items: pickleballCourts,
           },
           {
             name: "Futsal",
-            icon: "⚽",
             items: futsalCourts,
           },
         ].map((group) => (
@@ -231,8 +230,8 @@ export default async function Home() {
         </div>
 
         <a href="#courts" className="banner-button">
-  Explore Courts <span>↗</span>
-</a>
+          Explore Courts
+        </a>
       </section>
 
       <Footer />

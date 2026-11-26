@@ -16,7 +16,7 @@ export default function CourtCard({ court, index = 0 }) {
       >
         <div className="visual-top">
           <span className="sport-tag">
-            {isFutsal ? "⚽ FUTSAL" : "🏓 PICKLEBALL"}
+            {isFutsal ? "FUTSAL" : "PICKLEBALL"}
           </span>
 
           <span className="court-number">
