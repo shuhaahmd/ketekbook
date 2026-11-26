@@ -1,26 +1,2451 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+
+
 @import "tailwindcss";
 
+
+
+/* ========================================
+
+   1. DESIGN TOKENS
+
+======================================== */
+
+
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+  --color-primary: #c5f36b;
+
+  --color-primary-dark: #a9d94e;
+
+
+
+  --color-dark: #101b19;
+
+  --color-dark-soft: #182522;
+
+
+
+  --color-background: #f6f7f1;
+
+  --color-surface: #ffffff;
+
+
+
+  --color-text: #17231e;
+
+  --color-muted: #89958d;
+
+  --color-border: #e8ece5;
+
+
+
+  --font-heading: "Space Grotesk", sans-serif;
+
+  --font-body: "DM Sans", sans-serif;
+
+
+
+  --container-width: 1440px;
+
+  --page-padding: 7%;
+
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+
+/* ========================================
+
+   2. RESET & GLOBAL
+
+======================================== */
+
+
+
+* {
+
+  box-sizing: border-box;
+
+  scroll-behavior: smooth;
+
 }
 
-@media (prefers-color-scheme: dark) {
+
+
+html {
+
+  scroll-padding-top: 90px;
+
+}
+
+
+
+body {
+
+  margin: 0;
+
+  background: var(--color-background);
+
+  color: var(--color-text);
+
+  font-family: var(--font-body);
+
+  -webkit-font-smoothing: antialiased;
+
+}
+
+
+
+button,
+
+input,
+
+textarea,
+
+select {
+
+  font: inherit;
+
+}
+
+
+
+a {
+
+  color: inherit;
+
+  text-decoration: none;
+
+}
+
+
+
+button,
+
+a {
+
+  -webkit-tap-highlight-color: transparent;
+
+}
+
+
+
+button:focus-visible,
+
+a:focus-visible {
+
+  outline: 3px solid var(--color-primary-dark);
+
+  outline-offset: 4px;
+
+}
+
+
+
+::selection {
+
+  background: var(--color-primary);
+
+  color: var(--color-dark);
+
+}
+
+
+
+/* ========================================
+
+   3. NAVIGATION
+
+======================================== */
+
+
+
+.navbar {
+
+  position: relative;
+
+  z-index: 10;
+
+  min-height: 82px;
+
+  padding: 0 var(--page-padding);
+
+
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+
+
+  background: var(--color-dark);
+
+  color: var(--color-surface);
+
+}
+
+
+
+.brand {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+
+
+  font-family: var(--font-heading);
+
+  font-size: 23px;
+
+  font-weight: 700;
+
+  letter-spacing: -1px;
+
+}
+
+
+
+.brand-icon {
+
+  width: 36px;
+
+  height: 36px;
+
+
+
+  display: grid;
+
+  place-items: center;
+
+
+
+  background: var(--color-primary);
+
+  color: var(--color-dark);
+
+  border-radius: 10px;
+
+
+
+  font-size: 20px;
+
+  font-weight: 700;
+
+}
+
+
+
+.brand-light {
+
+  color: var(--color-primary);
+
+}
+
+
+
+.nav-links {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 36px;
+
+
+
+  color: #b9c4be;
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+}
+
+
+
+.nav-links a,
+
+.login-link {
+
+  transition: color 0.2s ease;
+
+}
+
+
+
+.nav-links a:hover,
+
+.login-link:hover {
+
+  color: var(--color-primary);
+
+}
+
+
+
+.nav-actions {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 24px;
+
+  font-size: 13px;
+
+}
+
+
+
+.login-link {
+
+  color: white;
+
+}
+
+
+
+.nav-cta {
+
+  display: inline-flex;
+
+  align-items: center;
+
+
+
+  padding: 13px 19px;
+
+  border-radius: 7px;
+
+
+
+  background: var(--color-primary);
+
+  color: var(--color-dark);
+
+
+
+  font-weight: 700;
+
+  transition: all 0.2s ease;
+
+}
+
+
+
+.nav-cta:hover {
+
+  background: #d7ff8d;
+
+  transform: translateY(-2px);
+
+}
+
+
+
+.nav-cta span {
+
+  margin-left: 12px;
+
+}
+
+
+
+/* ========================================
+
+   4. HERO SECTION
+
+======================================== */
+
+
+
+.hero {
+
+  min-height: 590px;
+
+  padding: 75px var(--page-padding) 55px;
+
+
+
+  display: grid;
+
+  grid-template-columns: 1fr 0.9fr;
+
+  align-items: center;
+
+
+
+  position: relative;
+
+  overflow: hidden;
+
+
+
+  background: var(--color-dark);
+
+  color: white;
+
+}
+
+
+
+.hero-content {
+
+  position: relative;
+
+  z-index: 2;
+
+}
+
+
+
+.eyebrow,
+
+.section-eyebrow {
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+}
+
+
+
+.eyebrow {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  color: var(--color-primary);
+
+}
+
+
+
+.live-dot {
+
+  width: 8px;
+
+  height: 8px;
+
+  flex-shrink: 0;
+
+
+
+  border-radius: 50%;
+
+  background: var(--color-primary);
+
+  box-shadow: 0 0 12px var(--color-primary);
+
+}
+
+
+
+.hero h1 {
+
+  margin: 27px 0 22px;
+
+
+
+  font-family: var(--font-heading);
+
+  font-size: clamp(55px, 6.5vw, 88px);
+
+  font-weight: 700;
+
+  line-height: 0.99;
+
+  letter-spacing: -5px;
+
+}
+
+
+
+.hero h1 span {
+
+  color: var(--color-primary);
+
+}
+
+
+
+.hero-description {
+
+  max-width: 420px;
+
+  color: #aebbb3;
+
+  font-size: 15px;
+
+  line-height: 1.8;
+
+}
+
+
+
+.hero-actions {
+
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 25px;
+
+  margin-top: 32px;
+
+
+
+  font-size: 13px;
+
+}
+
+
+
+.primary-button {
+
+  display: inline-flex;
+
+  align-items: center;
+
+
+
+  padding: 14px 19px;
+
+  border-radius: 7px;
+
+
+
+  background: var(--color-primary);
+
+  color: var(--color-dark);
+
+  font-weight: 700;
+
+
+
+  transition: all 0.2s ease;
+
+}
+
+
+
+.primary-button:hover {
+
+  background: #d7ff8d;
+
+  transform: translateY(-2px);
+
+}
+
+
+
+.primary-button span {
+
+  margin-left: 12px;
+
+}
+
+
+
+.secondary-button {
+
+  color: #d4ded8;
+
+  transition: color 0.2s ease;
+
+}
+
+
+
+.secondary-button:hover {
+
+  color: var(--color-primary);
+
+}
+
+
+
+.secondary-button span {
+
+  margin-left: 8px;
+
+  color: var(--color-primary);
+
+}
+
+
+
+.hero-stats {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 25px;
+
+  margin-top: 58px;
+
+}
+
+
+
+.hero-stats div:not(.stat-divider) {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+
+}
+
+
+
+.hero-stats strong {
+
+  font-family: var(--font-heading);
+
+  font-size: 25px;
+
+}
+
+
+
+.hero-stats span {
+
+  color: #9ba9a1;
+
+  font-size: 10px;
+
+}
+
+
+
+.stat-divider {
+
+  width: 1px;
+
+  height: 35px;
+
+  background: #40504a;
+
+}
+
+
+
+/* ========================================
+
+   5. HERO COURT ILLUSTRATION
+
+======================================== */
+
+
+
+.hero-art {
+
+  position: relative;
+
+  min-height: 380px;
+
+
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+}
+
+
+
+.art-glow {
+
+  position: absolute;
+
+  width: 350px;
+
+  height: 350px;
+
+
+
+  border-radius: 50%;
+
+  background: var(--color-primary);
+
+
+
+  filter: blur(100px);
+
+  opacity: 0.15;
+
+}
+
+
+
+.hero-court {
+
+  position: relative;
+
+
+
+  width: 90%;
+
+  max-width: 440px;
+
+  height: 300px;
+
+
+
+  border: 2px solid rgba(197, 243, 107, 0.8);
+
+  border-radius: 8px;
+
+
+
+  background: linear-gradient(135deg, #29453a, #1c3029);
+
+
+
+  transform: perspective(700px) rotateY(-18deg) rotateX(7deg);
+
+
+
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.25);
+
+}
+
+
+
+.hero-court-line {
+
+  position: absolute;
+
+  background: rgba(221, 255, 192, 0.65);
+
+}
+
+
+
+.hero-court-line.horizontal {
+
+  width: 100%;
+
+  height: 2px;
+
+  top: 50%;
+
+}
+
+
+
+.hero-court-line.vertical {
+
+  height: 100%;
+
+  width: 2px;
+
+  left: 50%;
+
+}
+
+
+
+.hero-court-circle {
+
+  position: absolute;
+
+  width: 95px;
+
+  height: 95px;
+
+
+
+  border: 2px solid rgba(221, 255, 192, 0.65);
+
+  border-radius: 50%;
+
+
+
+  top: 50%;
+
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+}
+
+
+
+.hero-court-box {
+
+  position: absolute;
+
+  width: 75px;
+
+  height: 125px;
+
+
+
+  border: 2px solid rgba(221, 255, 192, 0.65);
+
+
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+}
+
+
+
+.hero-court-box.left {
+
+  left: 0;
+
+}
+
+
+
+.hero-court-box.right {
+
+  right: 0;
+
+}
+
+
+
+.hero-court-net {
+
+  position: absolute;
+
+  top: 0;
+
+  bottom: 0;
+
+  left: 50%;
+
+
+
+  border-left: 2px dashed rgba(255, 255, 255, 0.6);
+
+}
+
+
+
+.art-label {
+
+  position: absolute;
+
+  color: var(--color-primary);
+
+
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+}
+
+
+
+.art-label-top {
+
+  top: 10px;
+
+  right: 4%;
+
+}
+
+
+
+.art-label-bottom {
+
+  bottom: 5px;
+
+  left: 4%;
+
+}
+
+
+
+.art-floating-card {
+
+  position: absolute;
+
+  right: -1%;
+
+  bottom: 27px;
+
+
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+
+
+  padding: 15px 20px;
+
+
+
+  background: white;
+
+  color: var(--color-dark);
+
+
+
+  border-radius: 9px;
+
+  box-shadow: 0 15px 45px #0005;
+
+}
+
+
+
+.floating-icon {
+
+  width: 38px;
+
+  height: 38px;
+
+
+
+  display: grid;
+
+  place-items: center;
+
+
+
+  border-radius: 8px;
+
+  background: #eff8df;
+
+  color: #5c8720;
+
+
+
+  font-size: 22px;
+
+}
+
+
+
+.art-floating-card div {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+
+}
+
+
+
+.art-floating-card strong {
+
+  font-size: 13px;
+
+}
+
+
+
+.art-floating-card div span {
+
+  color: #748078;
+
+  font-size: 10px;
+
+}
+
+
+
+.hero-background-text {
+
+  position: absolute;
+
+  right: 3%;
+
+  bottom: -85px;
+
+
+
+  color: rgba(255, 255, 255, 0.025);
+
+
+
+  font-family: var(--font-heading);
+
+  font-size: 220px;
+
+  font-weight: 700;
+
+
+
+  pointer-events: none;
+
+}
+
+
+
+/* ========================================
+
+   6. FEATURE STRIP
+
+======================================== */
+
+
+
+.feature-strip {
+
+  padding: 28px var(--page-padding);
+
+
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 25px;
+
+
+
+  background: white;
+
+  border-bottom: 1px solid var(--color-border);
+
+}
+
+
+
+.feature-item {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 15px;
+
+}
+
+
+
+.feature-icon {
+
+  width: 42px;
+
+  height: 42px;
+
+  flex-shrink: 0;
+
+
+
+  display: grid;
+
+  place-items: center;
+
+
+
+  border-radius: 10px;
+
+  background: #eff5e6;
+
+  color: #668b31;
+
+
+
+  font-size: 21px;
+
+}
+
+
+
+.feature-item div {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+
+}
+
+
+
+.feature-item strong {
+
+  font-size: 12px;
+
+}
+
+
+
+.feature-item div span {
+
+  color: #89938b;
+
+  font-size: 10px;
+
+}
+
+
+
+/* ========================================
+
+   7. COURTS SECTION
+
+======================================== */
+
+
+
+.courts-section {
+
+  width: 100%;
+
+  max-width: var(--container-width);
+
+  margin: 0 auto;
+
+  padding: 90px var(--page-padding);
+
+}
+
+
+
+.section-heading {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: end;
+
+
+
+  margin-bottom: 55px;
+
+}
+
+
+
+.section-eyebrow {
+
+  color: #819d4e;
+
+}
+
+
+
+.section-heading h2,
+
+.booking-banner h2 {
+
+  margin: 15px 0 12px;
+
+
+
+  font-family: var(--font-heading);
+
+  font-size: clamp(38px, 4vw, 54px);
+
+  font-weight: 700;
+
+  line-height: 1.05;
+
+  letter-spacing: -2px;
+
+}
+
+
+
+.section-heading h2 span {
+
+  color: #8ab342;
+
+}
+
+
+
+.section-description {
+
+  color: #7e8981;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+
+}
+
+
+
+.court-count,
+
+.sport-heading > span {
+
+  color: #849087;
+
+
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+}
+
+
+
+.sport-group {
+
+  margin-bottom: 48px;
+
+}
+
+
+
+.sport-heading {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+
+
+  padding-bottom: 15px;
+
+  margin-bottom: 22px;
+
+
+
+  border-bottom: 1px solid #dfe5da;
+
+}
+
+
+
+.sport-heading > div {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+}
+
+
+
+.sport-heading h3 {
+
+  margin: 0;
+
+  font-family: var(--font-heading);
+
+  font-size: 20px;
+
+}
+
+
+
+.sport-heading-icon {
+
+  font-size: 20px;
+
+}
+
+
+
+/* ========================================
+
+   8. COURT CARDS
+
+======================================== */
+
+
+
+.court-grid {
+
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 22px;
+
+}
+
+
+
+.court-card {
+
+  min-width: 0;
+
+  overflow: hidden;
+
+
+
+  background: white;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: 12px;
+
+
+
+  transition:
+
+    transform 0.25s ease,
+
+    box-shadow 0.25s ease,
+
+    border-color 0.25s ease;
+
+}
+
+
+
+.court-card:hover {
+
+  transform: translateY(-5px);
+
+  border-color: #d6e2c8;
+
+
+
+  box-shadow: 0 18px 40px rgba(28, 48, 35, 0.09);
+
+}
+
+
+
+.court-visual {
+
+  height: 185px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  padding: 16px;
+
+}
+
+
+
+.pickleball-visual {
+
+  background: linear-gradient(135deg, #d9edb0, #a9ce77);
+
+}
+
+
+
+.futsal-visual {
+
+  background: linear-gradient(135deg, #b5d4cc, #78a99a);
+
+}
+
+
+
+.visual-top {
+
+  position: relative;
+
+  z-index: 2;
+
+
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+}
+
+
+
+.sport-tag {
+
+  padding: 7px 10px;
+
+
+
+  background: rgba(255, 255, 255, 0.8);
+
+  border-radius: 5px;
+
+
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.5px;
+
+}
+
+
+
+.court-number {
+
+  color: rgba(20, 48, 33, 0.45);
+
+
+
+  font-family: var(--font-heading);
+
+  font-size: 24px;
+
+  font-weight: 700;
+
+}
+
+
+
+.court-art {
+
+  position: absolute;
+
+  top: 48px;
+
+  left: 15%;
+
+
+
+  width: 70%;
+
+  height: 115px;
+
+
+
+  border: 2px solid rgba(255, 255, 255, 0.85);
+
+  background: rgba(49, 98, 53, 0.2);
+
+
+
+  transform: perspective(350px) rotateX(25deg) rotateZ(-4deg);
+
+}
+
+
+
+.court-center-line {
+
+  position: absolute;
+
+  top: 0;
+
+  bottom: 0;
+
+  left: 50%;
+
+
+
+  border-left: 2px solid rgba(255, 255, 255, 0.8);
+
+}
+
+
+
+.court-center-circle {
+
+  position: absolute;
+
+
+
+  width: 45px;
+
+  height: 45px;
+
+
+
+  border: 2px solid rgba(255, 255, 255, 0.8);
+
+  border-radius: 50%;
+
+
+
+  top: 50%;
+
+  left: 50%;
+
+
+
+  transform: translate(-50%, -50%);
+
+}
+
+
+
+.court-side-box {
+
+  position: absolute;
+
+
+
+  width: 25px;
+
+  height: 65px;
+
+
+
+  border: 2px solid rgba(255, 255, 255, 0.8);
+
+
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+}
+
+
+
+.left-box {
+
+  left: 0;
+
+}
+
+
+
+.right-box {
+
+  right: 0;
+
+}
+
+
+
+.visual-caption {
+
+  position: absolute;
+
+  right: 15px;
+
+  bottom: 13px;
+
+
+
+  color: rgba(30, 65, 40, 0.55);
+
+
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+
+}
+
+
+
+.court-info {
+
+  padding: 20px;
+
+}
+
+
+
+.court-category {
+
+  margin: 0 0 8px;
+
+
+
+  color: #8aa45b;
+
+
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+
+}
+
+
+
+.court-info h3 {
+
+  margin: 0;
+
+
+
+  font-family: var(--font-heading);
+
+  font-size: 19px;
+
+  font-weight: 600;
+
+}
+
+
+
+.court-bottom {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+
+
+  padding-top: 17px;
+
+  margin-top: 20px;
+
+
+
+  border-top: 1px solid #edf0e9;
+
+}
+
+
+
+.court-price {
+
+  display: flex;
+
+  align-items: baseline;
+
+  gap: 5px;
+
+}
+
+
+
+.court-price strong {
+
+  font-size: 15px;
+
+}
+
+
+
+.court-price span {
+
+  color: #8b958d;
+
+  font-size: 10px;
+
+}
+
+
+
+.court-price .price-pending {
+
+  color: #8b958d;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+}
+
+
+
+.court-arrow {
+
+  width: 34px;
+
+  height: 34px;
+
+
+
+  display: grid;
+
+  place-items: center;
+
+
+
+  background: var(--color-dark);
+
+  color: white;
+
+  border-radius: 50%;
+
+
+
+  transition: background 0.2s ease;
+
+}
+
+
+
+.court-arrow:hover {
+
+  background: #668d39;
+
+}
+
+
+
+/* ========================================
+
+   9. BOOKING BANNER
+
+======================================== */
+
+
+
+.booking-banner {
+
+  margin: 0 var(--page-padding) 75px;
+
+  padding: 55px 6%;
+
+
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 30px;
+
+
+
+  background: var(--color-dark);
+
+  border-radius: 14px;
+
+  color: white;
+
+}
+
+
+
+.booking-banner h2 {
+
+  margin-bottom: 0;
+
+}
+
+
+
+.booking-banner h2 span {
+
+  color: var(--color-primary);
+
+}
+
+
+
+.banner-button {
+
+  display: inline-flex;
+
+  align-items: center;
+
+
+
+  padding: 16px 22px;
+
+
+
+  background: var(--color-primary);
+
+  color: var(--color-dark);
+
+
+
+  border-radius: 7px;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+
+
+
+  transition: all 0.2s ease;
+
+}
+
+
+
+.banner-button:hover {
+
+  background: #d7ff8d;
+
+  transform: translateY(-2px);
+
+}
+
+
+
+.banner-button span {
+
+  margin-left: 18px;
+
+}
+
+
+
+/* ========================================
+
+   10. FOOTER
+
+======================================== */
+
+
+
+.footer {
+
+  padding: 28px var(--page-padding);
+
+
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+
+
+  background: white;
+
+  border-top: 1px solid var(--color-border);
+
+}
+
+
+
+.footer-brand {
+
+  color: var(--color-dark);
+
+  font-size: 19px;
+
+}
+
+
+
+.footer-brand .brand-light {
+
+  color: #789c3f;
+
+}
+
+
+
+.footer p,
+
+.footer > span {
+
+  margin: 0;
+
+  color: #849087;
+
+  font-size: 11px;
+
+}
+
+
+
+/* ========================================
+
+   11. ERROR MESSAGE
+
+======================================== */
+
+
+
+.error-message {
+
+  padding: 15px;
+
+
+
+  background: #fff0ef;
+
+  color: #b42318;
+
+
+
+  border-radius: 8px;
+
+  font-size: 13px;
+
+}
+
+
+
+/* ========================================
+
+   12. TABLET RESPONSIVENESS
+
+======================================== */
+
+
+
+@media (max-width: 1000px) {
+
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+
+    --page-padding: 5%;
+
+  }
+
+
+
+  .hero {
+
+    grid-template-columns: 1fr 0.85fr;
+
+  }
+
+
+
+  .hero h1 {
+
+    font-size: 65px;
+
+  }
+
+
+
+  .hero-art {
+
+    transform: scale(0.9);
+
+  }
+
+
+
+  .court-grid {
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  }
+
+}
+
+
+
+/* ========================================
+
+   13. MOBILE RESPONSIVENESS
+
+======================================== */
+
+
+
+@media (max-width: 600px) {
+
+  :root {
+
+    --page-padding: 6%;
+
+  }
+
+
+
+  /* Navigation */
+
+
+
+  .navbar {
+
+    min-height: 70px;
+
+  }
+
+
+
+  .brand {
+
+    gap: 8px;
+
+    font-size: 20px;
+
+  }
+
+
+
+  .brand-icon {
+
+    width: 33px;
+
+    height: 33px;
+
+    font-size: 18px;
+
+  }
+
+
+
+  .nav-links {
+
+    display: none;
+
+  }
+
+
+
+  .nav-actions {
+
+    gap: 12px;
+
+    font-size: 11px;
+
+  }
+
+
+
+  .login-link {
+
+    display: none;
+
+  }
+
+
+
+  .nav-cta {
+
+    padding: 11px 12px;
+
+  }
+
+
+
+  /* Hero */
+
+
+
+  .hero {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+
+
+    padding: 60px var(--page-padding) 40px;
+
+  }
+
+
+
+  .hero h1 {
+
+    margin: 25px 0 18px;
+
+
+
+    font-size: clamp(52px, 14vw, 72px);
+
+    letter-spacing: -3px;
+
+  }
+
+
+
+  .hero-description {
+
+    font-size: 13px;
+
+  }
+
+
+
+  .hero-actions {
+
+    gap: 17px;
+
+    font-size: 11px;
+
+  }
+
+
+
+  .primary-button {
+
+    padding: 14px 15px;
+
+  }
+
+
+
+  .hero-stats {
+
+    gap: 15px;
+
+    margin-top: 40px;
+
+  }
+
+
+
+  .hero-stats strong {
+
+    font-size: 21px;
+
+  }
+
+
+
+  .hero-stats span {
+
+    font-size: 9px;
+
+  }
+
+
+
+  /* Hero artwork */
+
+
+
+  .hero-art {
+
+    min-height: 275px;
+
+    margin-top: 25px;
+
+    transform: none;
+
+  }
+
+
+
+  .hero-court {
+
+    width: 88%;
+
+    height: 220px;
+
+  }
+
+
+
+  .hero-court-circle {
+
+    width: 65px;
+
+    height: 65px;
+
+  }
+
+
+
+  .hero-court-box {
+
+    width: 50px;
+
+    height: 95px;
+
+  }
+
+
+
+  .art-floating-card {
+
+    right: 0;
+
+    bottom: 10px;
+
+    padding: 10px 13px;
+
+  }
+
+
+
+  .art-label-top {
+
+    top: 0;
+
+  }
+
+
+
+  .art-label-bottom {
+
+    bottom: 0;
+
+  }
+
+
+
+  .hero-background-text {
+
+    font-size: 130px;
+
+  }
+
+
+
+  /* Features */
+
+
+
+  .feature-strip {
+
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+
+
+
+    padding: 27px 8%;
+
+  }
+
+
+
+  .feature-item {
+
+    justify-content: flex-start;
+
+  }
+
+
+
+  /* Courts */
+
+
+
+  .courts-section {
+
+    padding-top: 65px;
+
+    padding-bottom: 55px;
+
+  }
+
+
+
+  .section-heading {
+
+    display: block;
+
+    margin-bottom: 38px;
+
+  }
+
+
+
+  .section-heading h2 {
+
+    font-size: 43px;
+
+  }
+
+
+
+  .court-count {
+
+    display: inline-block;
+
+    margin-top: 15px;
+
+  }
+
+
+
+  .sport-heading h3 {
+
+    font-size: 18px;
+
+  }
+
+
+
+  .court-grid {
+
+    grid-template-columns: 1fr;
+
+    gap: 16px;
+
+  }
+
+
+
+  .court-visual {
+
+    height: 190px;
+
+  }
+
+
+
+  /* Booking banner */
+
+
+
+  .booking-banner {
+
+    margin: 0 var(--page-padding) 50px;
+
+    padding: 35px 25px;
+
+
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+  }
+
+
+
+  .booking-banner h2 {
+
+    font-size: 39px;
+
+  }
+
+
+
+  /* Footer */
+
+
+
+  .footer {
+
+    padding: 28px var(--page-padding);
+
+
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 12px;
+
+  }
+
+
+
+  .footer p {
+
+    margin: 0;
+
+  }
+
+}
+
+
+
+
+
+/* ========================================
+   14. REDUCED MOTION ACCESSIBILITY
+
+======================================== */
+
+
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+
+  *::before,
+
+  *::after {
+
+    scroll-behavior: auto !important;
+
+    animation-duration: 0.01ms !important;
+
+    transition-duration: 0.01ms !important;
+
+  }
+
+}
+
+
+/* Book This Court Button */
+.court-book-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  margin-left: auto;
+  padding: 10px 18px;
+  background: #171717;
+  color: #ffffff;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.court-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.court-book-button {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+.court-info {
+  display: flex;
+  flex-direction: column;
+}
+.court-book-button:hover {
+  background: #383838;
+  transform: translateY(-1px);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .court-book-button {
+    padding: 9px 15px;
+    font-size: 12px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+
+
+
+
+
+
+/* Keep your remaining booking page styles below this line */
+
